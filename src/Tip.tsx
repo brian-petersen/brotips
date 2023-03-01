@@ -6,6 +6,6 @@ export default function Tip() {
   const tip = useLoaderData() as TipType | null
 
   return (
-    <p>{tip?.content}</p>
+    <p className="text-2xl text-slate-200 whitespace-pre-wrap">{tip?.content}</p>
   )
 }
