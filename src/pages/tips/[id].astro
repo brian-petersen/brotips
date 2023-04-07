@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import tips from '../../data/tips.json';
+
+export function getStaticPaths() {
+    const getPreviousId = (index: number) => {
+        if (index === 0) {
+            return null;
+        }
+
+        return tips[index - 1].id;
+    }
+
+    const getNextId = (index: number) => {
+        if (index === tips.length - 1) {
+            return null;
+        }
+
+        return tips[index + 1].id;
+    }
+
+    return tips.map(({ id, content }, index) => {
+        return {
+            params: { id },
+            props: {
+                content,
+                previous: getPreviousId(index),
+                next: getNextId(index),
+            },
+        }
+    });
+}
+
+const { id } = Astro.params;
+const { content, previous, next } = Astro.props;
+
+const linkClasses = "text-md text-gray-400 underline hover:text-gray-100";
+---
+
+<Layout title={`brotip #${id}`}>
+    <main>
+        <h1 class="text-xl text-gray-300 mb-5">brotip #{id}</h1>
+
+        <p class="text-2xl text-gray-100 whitespace-pre-wrap mb-5">{content}</p>
+
+        <div class="flex justify-between">
+            <!-- TODO previous and next links when null -->
+            <a href={`/tips/${previous}/`} class={linkClasses}>Previous</a>
+            <button id="random" class={linkClasses} data-total-tips={tips.length}>Random</button>
+            <a href={`/tips/${next}/`} class={linkClasses}>Next</a>
+        </div>
+    </main>
+</Layout>
+
+<script>
+    function getRandomNumber(min: number, max: number) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const randomButton = document.querySelector('#random') as HTMLButtonElement;
+
+    randomButton.addEventListener('click', () => {
+        const totalTips = parseInt(randomButton.dataset.totalTips || '10');
+        const randomTip = getRandomNumber(1, totalTips - 1);
+
+        window.location.href = `/tips/${randomTip}/`;
+    });
+</script>
