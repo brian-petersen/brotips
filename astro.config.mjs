@@ -3,5 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()]
+  // need this since deploying to GH pages
+  base: '/brotips',
+  integrations: [tailwind()],
 });

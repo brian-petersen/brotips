@@ -45,9 +45,9 @@ const linkClasses = "text-md text-gray-400 underline hover:text-gray-100";
 
         <div class="flex justify-between">
             <!-- TODO previous and next links when null -->
-            <a href={`/tips/${previous}/`} class={linkClasses}>Previous</a>
+            <a href={`/brotips/tips/${previous}/`} class={linkClasses}>Previous</a>
             <button id="random" class={linkClasses} data-total-tips={tips.length}>Random</button>
-            <a href={`/tips/${next}/`} class={linkClasses}>Next</a>
+            <a href={`/brotips/tips/${next}/`} class={linkClasses}>Next</a>
         </div>
     </main>
 </Layout>
@@ -63,6 +63,6 @@ const linkClasses = "text-md text-gray-400 underline hover:text-gray-100";
         const totalTips = parseInt(randomButton.dataset.totalTips || '10');
         const randomTip = getRandomNumber(1, totalTips - 1);
 
-        window.location.href = `/tips/${randomTip}/`;
+        window.location.href = `/brotips/tips/${randomTip}/`;
     });
 </script>
