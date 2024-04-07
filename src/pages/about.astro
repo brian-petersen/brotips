@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import tips from '../data/tips.json'
+
+const tipsCounts = tips.length;
+---
+
+<Layout>
+	<main>
+		<h1 class="text-gray-100 text-4xl font-bold">about</h1>
+
+		<p class="text-gray-300 text-l my-3">
+			while i was in highschool (circa 2009-2013), these quotes circulated
+			the social media platforms. i originally wrote an android app to
+			display them (which search, saving as favorites, and sharing functionality)
+			-- but they've since disappeared from the internet.
+		</p>
+
+		<p class="text-gray-300 text-l my-4">
+			i built this to resurrect and provide a way
+			for them to live on (in some fashion)
+		</p>
+
+		<p class="text-gray-300 text-l my-4">
+			there are {tipsCounts} tips recorded
+		</p>
+	</main>
+</Layout>

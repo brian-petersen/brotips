@@ -1,30 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import tips from '../data/tips.json'
-
-const tipsCounts = tips.length;
+import Link from '../layouts/Link.astro';
 ---
 
 <Layout>
-	<main>
-		<h1 class="text-gray-100 text-2xl">Welcome to the brotips archive!</h1>
+	<main class="flex flex-col items-center space-y-3">
+		<h1 class="text-gray-100 text-4xl font-bold">brotips archive</h1>
 
-		<p class="text-gray-300 text-l my-3">
-			While I was in highschool (circa 2009-2013), these quotes circulated
-			the social media platforms. I originally wrote an Android app to
-			display them (which search, saving as favorites, and sharing functionality)
-			-- but they've since disappeared slowly from the internet.
-		</p>
-
-		<p class="text-gray-300 text-l my-3">
-			I built this resurrect and provide a way
-			for them to live on (in some fashion).
-		</p>
-
-		<p class="text-gray-300 text-l my-3">
-			There are {tipsCounts} tips recorded.
-		</p>
-
-		<a href="/brotips/tips/1/" class="text-lg text-gray-200 underline hover:text-gray-400">Get started!</a>
+		<Link to="/brotips/tips/1/">browse</a>
+		<Link to="/brotips/about/">about</a>
+		<Link to="/brotips/sightings/">sightings</a>
 	</main>
 </Layout>
